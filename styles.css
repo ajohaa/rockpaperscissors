@@ -1,0 +1,98 @@
+/* GENERAL */
+body {
+font-family: "t26-carbon", monospace;
+font-weight: 400;
+font-style: normal;
+  background: #cbbdff;
+}
+
+
+.page-content {
+  padding: 3rem 0;
+  background: #ffffff;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.2);
+  transform-origin: center;
+}
+/* TITLE */
+.title {
+  background: #ddd;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-size: 2rem;
+  display: inline-block;
+  font-family: "cc-overbyte-off", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+/* INPUT */
+.name-input {
+  max-width: 240px;
+  border-radius: 999px;
+  text-align: center;
+}
+
+/* FADE TEXT (later animation target) */
+.fade-text {
+  opacity: 0.7;
+}
+
+/* MODE BUTTONS */
+.mode-btn {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: none;
+  background: #e0e0e0;
+  font-size: 1.1rem;
+}
+
+.mode-btn span {
+  font-size: 2rem;
+  display: block;
+}
+
+/* GAME */
+.hand-box {
+  height: 120px;
+  background: #ddd;
+  border-radius: 16px;
+  margin-top: 0.5rem;
+}
+
+.hp-bar {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* CHOICES */
+.choice-btn {
+  border: none;
+  background: #e0e0e0;
+  padding: 1rem;
+  border-radius: 16px;
+}
+
+.choice-btn img {
+  width: 48px;
+  height: auto;
+}
+
+/* RESULTS */
+.result-text {
+  font-size: 2rem;
+  font-weight: bold;font-family: "cc-overbyte-on", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+/* PLAY AGAIN */
+.play-again-btn {
+  border: none;
+  background: #ddd;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+}
