@@ -12,13 +12,11 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-
   <body class="page">
     <div class="container text-center page-content">
       <div class="row justify-content-center">
         <div class="col-10 col-sm-8 col-md-6">
-          <header class="title my-4">rock, paper, scissors</header>
-
+          <header class="title mb-4">rock, paper, scissors</header>
 
           <main class="card-custom p-4">
             <label class="label">hello! please enter your name here:</label>
@@ -32,24 +30,34 @@
               type="submit"
               id="generateBtn"
               class="mt-5 mb-5 btn btn-light w-100"
-            >submit</button>
+            >
+              submit
+            </button>
             <div class="fade-text">
-              welcome,
-              <span id="welcomeMessage" class="username">user</span>!
+              <span id="welcomeMessage" class="username"></span>
             </div>
             <p class="sub">choose a gamemode!</p>
 
-
+            <div class="row">
+              <div class="col-6 arrow">
+                <span>⮟</span>
+              </div>
+              <div class="col-6 arrow">
+                <span>⮟</span>
+              </div>
+            </div>
             <div class="row mt-4">
               <div class="col-6">
-                <button class="mode w-100">
+                <button class="mode w-100 bestof">
                   <span>best of</span>
+                  <br />
                   <strong>3</strong>
                 </button>
               </div>
               <div class="col-6">
-                <button class="mode w-100">
+                <button class="mode w-100 bestof">
                   <span>best of</span>
+                  <br />
                   <strong>5</strong>
                 </button>
               </div>
@@ -65,7 +73,6 @@
       crossorigin="anonymous"
     ></script>
 
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
@@ -74,6 +81,3 @@
     <script src="scripts.js"></script>
   </body>
 </html>
-
-
-

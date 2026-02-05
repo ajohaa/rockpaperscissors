@@ -1,14 +1,28 @@
 function getUserName() {
-    const userName = document.getElementById('userName').value;
-    return userName;
+  const blank = document.getElementById('userName').value.trim();
+  return blank === "" ? "guest" : blank;
 }
 
 function welcomeMessage() {
-    const userName = getUserName();
-    const message = `Welcome, ${userName}, to Rock-Paper-Scissors!`;
-    document.getElementById('welcomeMessage').innerText = message;
+  const userName = getUserName();
+  const message = `welcome, ${userName}, to rock-paper-scissors!`;
+  const el = document.getElementById('welcomeMessage');
+  if (!el) return;
+  // restart animation if it was already applied
+  el.classList.remove('fade-in');
+  void el.offsetWidth; // force reflow to restart CSS animation
+  el.innerText = message;
+  el.classList.add('fade-in');
 }
-welcomeMessage();
+
+// Attach click handler so the submit button updates the welcome message
+const generateBtn = document.getElementById('generateBtn');
+if (generateBtn) {
+  generateBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+    welcomeMessage();
+  });
+}
 
 const choices = ["rock", "paper", "scissors"];
 
