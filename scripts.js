@@ -39,6 +39,28 @@ const getUserChoice = (userInput) => {
   }
 };
 
+// I want the number of turns to depend on whether the user clicked 'best of 3' or 'best of 5'. For best of 3, the game should put 3 hearts in HP. If best of 5, the game should put 5 hearts in HP. I also want the game to remove a heart from the user's HP if they lose a round, and remove a heart from the computer's HP if they win a round. The game should end when either the user or computer loses all their hearts, and display a message saying who won.
+
+const numberOfTurns = 3; // default to best of 3, will update based on user selection
+if (document.getElementById('bestOfThree')) {
+  document.getElementById('bestOfThree').addEventListener('click', function() {
+    numberOfTurns = 3;
+    // update HP display to show 3 hearts
+    userHealth = `❤️❤️❤️`;
+    computerHealth = `❤️❤️❤️`; 
+  });
+} else if (document.getElementById('bestOfFive')) {
+    document.getElementById('bestOfFive').addEventListener('click', function() {
+      numberOfTurns = 5;
+      userHealth = `❤️❤️❤️❤️❤️`;
+      computerHealth = `❤️❤️❤️❤️❤️`;
+    });
+  }
+
+
+// bro i do not know how to code
+// i may be cooked
+
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
