@@ -12,6 +12,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  image-rendering: pixelated;
+
 }
 
 .bestof {
@@ -126,7 +128,7 @@ body {
 .input:hover,
 .input:focus-visible {
   border-color: #8e79dd;
-  box-shadow: 0 0 0 4px rgba(115, 92, 196, 0.35);
+  box-shadow: 0 0 5px 4px rgba(115, 92, 196, 0.35);
   outline: none;
 }
 
