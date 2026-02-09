@@ -24,24 +24,12 @@ if (generateBtn) {
   });
 }
 
-const choices = ["rock", "paper", "scissors"];
-
-const getUserChoice = (userInput) => {
-  userInput = userInput.toLowerCase();
-  if (
-    userInput === "rock" ||
-    userInput === "paper" ||
-    userInput === "scissors"
-  ) {
-    return userInput;
-  } else {
-    console.log("Error!");
-  }
-};
 
 // I want the number of turns to depend on whether the user clicked 'best of 3' or 'best of 5'. For best of 3, the game should put 3 hearts in HP. If best of 5, the game should put 5 hearts in HP. I also want the game to remove a heart from the user's HP if they lose a round, and remove a heart from the computer's HP if they win a round. The game should end when either the user or computer loses all their hearts, and display a message saying who won.
 
-let numberOfTurns = 3; // default to best of 3, will update based on user selection
+// AI helped me with this part because I wasn't sure how to implement the HP system onto the game page
+
+let numberOfTurns = 3;
 const HEART = "\u2764\ufe0f";
 
 const makeHearts = (count) => HEART.repeat(count);
@@ -69,15 +57,37 @@ if (bestOfFiveBtn) {
   });
 }
 
-// If we're on the game page, read the saved mode and render hearts.
 const savedBestOf = localStorage.getItem("rpsBestOf");
 if (savedBestOf === "5") {
   numberOfTurns = 5;
 }
 updateHpDisplay(numberOfTurns);
 
-// bro i do not know how to code
-// i may be cooked
+// end of AI code
+
+
+const rockBtn = document.getElementById('rockBtn');
+const paperBtn = document.getElementById('paperBtn');
+const scissorsBtn = document.getElementById('scissorsBtn');
+
+rockBtn.addEventListener('click', function () { playRound("rock") });
+paperBtn.addEventListener('click', function () { playRound("paper") });
+scissorsBtn.addEventListener('click', function () { playRound("scissors") });
+
+
+const playerChoices = [rockBtn, paperBtn, scissorsBtn];
+
+const computerChoices = ["rock", "paper", "scissors"];
+
+const getUserChoice = (btn) => {
+  if (btn === rockBtn) {
+    return "rock";
+  } else if (btn === paperBtn) {
+    return "paper";
+  } else if (btn === scissorsBtn) {
+    return "scissors";
+  }
+};
 
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -91,43 +101,29 @@ const getComputerChoice = () => {
   }
 };
 
-const determineWinner = (userChoice, computerChoice) => {
-  if (userChoice === computerChoice) {
-    return "The game is a tie!";
-  }
-  if (userChoice === "rock") {
-    if (computerChoice === "paper") {
-      return "Computer won.";
-    } else {
-      return "You won!";
-    }
-  }
-
-  if (userChoice === "paper") {
-    if (computerChoice === "scissors") {
-      return "Computer won.";
-    } else {
-      return "You won!";
-    }
-  }
-
-  if (userChoice === "scissors") {
-    if (computerChoice === "rock") {
-      return "Computer won.";
-    } else {
-      return "You won!";
-    }
-  }
-};
-
-const playGame = () => {
-  const userChoice = getUserChoice("scissors");
+const playRound = (userChoice) => {
   const computerChoice = getComputerChoice();
+  const result = determineWinner(userChoice, computerChoice);
   console.log(`You chose: ${userChoice}.`);
   console.log(`Computer chose: ${computerChoice}.`);
-
-  console.log(determineWinner(userChoice, computerChoice));
+  console.log(result);
 };
 
-playGame();
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+    return "It's a tie!";
+  } else if ((userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "paper" && computerChoice === "rock") ||
+    (userChoice === "scissors" && computerChoice === "paper")) {
+    return "You win!";
+  } else {
+    return "You lose!";
+  }
+};
 
+function displayResult(result) {
+  const resultEl = document.getElementById('result');
+  if (resultEl) {
+    resultEl.textContent = result;
+  }
+} 
