@@ -35,13 +35,6 @@ const HEART = "\u2764\ufe0f";
 
 const makeHearts = (count) => HEART.repeat(count);
 
-const updateHpDisplay = (count) => {
-  const userEl = document.getElementById("userHealth");
-  const computerEl = document.getElementById("computerHealth");
-  if (userEl) userEl.textContent = makeHearts(count);
-  if (computerEl) computerEl.textContent = makeHearts(count);
-};
-
 const bestOfThreeBtn = document.getElementById("bestOfThree");
 if (bestOfThreeBtn) {
   bestOfThreeBtn.addEventListener("click", function () {
@@ -62,7 +55,6 @@ const savedBestOf = localStorage.getItem("rpsBestOf");
 if (savedBestOf === "5") {
   numberOfTurns = 5;
 }
-updateHpDisplay(numberOfTurns);
 
 // end of AI code
 
