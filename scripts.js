@@ -27,7 +27,8 @@ if (generateBtn) {
 
 // I want the number of turns to depend on whether the user clicked 'best of 3' or 'best of 5'. For best of 3, the game should put 3 hearts in HP. If best of 5, the game should put 5 hearts in HP. I also want the game to remove a heart from the user's HP if they lose a round, and remove a heart from the computer's HP if they win a round. The game should end when either the user or computer loses all their hearts, and display a message saying who won.
 
-// AI helped me with this part because I wasn't sure how to implement the HP system onto the game page
+// AI helped me with this part because I wasn't sure how to implement the HP system onto the game page. 
+// Having best of 5 and best of 3 gamemodes was not necessary for the project so I think it should be fine if I used AI for this part
 
 let numberOfTurns = 3;
 const HEART = "\u2764\ufe0f";
@@ -101,6 +102,18 @@ const getComputerChoice = () => {
   }
 };
 
+let userWins = 0;
+let computerWins = 0;
+
+const addUserWins = () => {
+  userWins++;
+};
+
+const addComputerWins = () => {
+  computerWins++;
+};
+
+
 const playRound = (userChoice) => {
   const computerChoice = getComputerChoice();
   const result = determineWinner(userChoice, computerChoice);
@@ -119,6 +132,16 @@ const determineWinner = (userChoice, computerChoice) => {
   } else {
     return "You lose!";
   }
+};
+
+if ("You win!") {
+  addUserWins();
+  updateHpDisplay(numberOfTurns - computerWins);
+}
+
+if ("You lose!") {
+  addComputerWins();
+  updateHpDisplay(numberOfTurns - userWins);
 };
 
 function displayResult(result) {
