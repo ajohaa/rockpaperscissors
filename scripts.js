@@ -71,9 +71,11 @@ const rockBtn = document.getElementById('rockBtn');
 const paperBtn = document.getElementById('paperBtn');
 const scissorsBtn = document.getElementById('scissorsBtn');
 
-rockBtn.addEventListener('click', function () { playRound("rock") });
-paperBtn.addEventListener('click', function () { playRound("paper") });
-scissorsBtn.addEventListener('click', function () { playRound("scissors") });
+if (rockBtn && paperBtn && scissorsBtn) {
+  rockBtn.addEventListener('click', () => playRound("rock"));
+  paperBtn.addEventListener('click', () => playRound("paper"));
+  scissorsBtn.addEventListener('click', () => playRound("scissors"));
+}
 
 
 const playerChoices = [rockBtn, paperBtn, scissorsBtn];
@@ -113,36 +115,47 @@ const addComputerWins = () => {
   computerWins++;
 };
 
+let userHP;
+let computerHP;
+
+const startGame = () => {
+  userHP = numberOfTurns;
+  computerHP = numberOfTurns;
+  updateHpDisplay();
+};
+
+const updateHpDisplay = () => {
+  document.getElementById("userHealth").textContent = makeHearts(userHP);
+  document.getElementById("computerHealth").textContent = makeHearts(computerHP);
+};
 
 const playRound = (userChoice) => {
   const computerChoice = getComputerChoice();
   const result = determineWinner(userChoice, computerChoice);
-  console.log(`You chose: ${userChoice}.`);
-  console.log(`Computer chose: ${computerChoice}.`);
-  console.log(result);
+
+  if (result === "You win!") {
+    computerHP--;
+  } else if (result === "You lose!") {
+    userHP--;
+  }
+
+  updateHpDisplay();
+  displayResult(result);
+
+  checkGameOver();
 };
 
-const determineWinner = (userChoice, computerChoice) => {
-  if (userChoice === computerChoice) {
-    return "It's a tie!";
-  } else if ((userChoice === "rock" && computerChoice === "scissors") ||
-    (userChoice === "paper" && computerChoice === "rock") ||
-    (userChoice === "scissors" && computerChoice === "paper")) {
-    return "You win!";
-  } else {
-    return "You lose!";
+const checkGameOver = () => {
+  if (userHP === 0) {
+    alert("computer won!");
+  } else if (computerHP === 0) {
+    alert("you won!");
   }
 };
 
-if ("You win!") {
-  addUserWins();
-  updateHpDisplay(numberOfTurns - computerWins);
+if (document.getElementById("userHealth")) {
+  startGame();
 }
-
-if ("You lose!") {
-  addComputerWins();
-  updateHpDisplay(numberOfTurns - userWins);
-};
 
 function displayResult(result) {
   const resultEl = document.getElementById('result');
