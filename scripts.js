@@ -123,6 +123,18 @@ const updateHpDisplay = () => {
 
 const playRound = (userChoice) => {
   const computerChoice = getComputerChoice();
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+    return "It's a tie!";
+  } else if ((userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "paper" && computerChoice === "rock") ||
+    (userChoice === "scissors" && computerChoice === "paper")) {
+    return "You win!";
+  } else {
+    return "You lose!";
+  }
+};
+
   const result = determineWinner(userChoice, computerChoice);
 
   if (result === "You win!") {
@@ -139,9 +151,11 @@ const playRound = (userChoice) => {
 
 const checkGameOver = () => {
   if (userHP === 0) {
-    alert("computer won!");
+    // user lost
+    window.location.href = "lose.html";
   } else if (computerHP === 0) {
-    alert("you won!");
+    // user won
+    window.location.href = "win.html";
   }
 };
 
