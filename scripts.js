@@ -5,7 +5,8 @@ function getUserName() {
 
 function welcomeMessage() {
   const userName = getUserName();
-  const message = `welcome, ${userName}, to rock-paper-scissors!`;
+  localStorage.setItem("rpsUsername", userName); // had to google how to use this to make the username stay across the pages
+  const message = `welcome, ${userName}!`;
   const el = document.getElementById('welcomeMessage');
   if (!el) return;
   // restart animation if it was already applied
@@ -24,8 +25,12 @@ if (generateBtn) {
   });
 }
 
+const username = localStorage.getItem("rpsUsername") || "guest";
+const nameEl = document.getElementById("username");
 
-// I want the number of turns to depend on whether the user clicked 'best of 3' or 'best of 5'. For best of 3, the game should put 3 hearts in HP. If best of 5, the game should put 5 hearts in HP. I also want the game to remove a heart from the user's HP if they lose a round, and remove a heart from the computer's HP if they win a round. The game should end when either the user or computer loses all their hearts, and display a message saying who won.
+if (nameEl) {
+  nameEl.textContent = username;
+}
 
 // AI helped me with this part because I wasn't sure how to implement the HP system onto the game page. 
 // Having best of 5 and best of 3 gamemodes was not necessary for the project so I think it should be fine if I used AI for this part
@@ -123,17 +128,17 @@ const updateHpDisplay = () => {
 
 const playRound = (userChoice) => {
   const computerChoice = getComputerChoice();
-const determineWinner = (userChoice, computerChoice) => {
-  if (userChoice === computerChoice) {
-    return "It's a tie!";
-  } else if ((userChoice === "rock" && computerChoice === "scissors") ||
-    (userChoice === "paper" && computerChoice === "rock") ||
-    (userChoice === "scissors" && computerChoice === "paper")) {
-    return "You win!";
-  } else {
-    return "You lose!";
-  }
-};
+  const determineWinner = (userChoice, computerChoice) => {
+    if (userChoice === computerChoice) {
+      return "It's a tie!";
+    } else if ((userChoice === "rock" && computerChoice === "scissors") ||
+      (userChoice === "paper" && computerChoice === "rock") ||
+      (userChoice === "scissors" && computerChoice === "paper")) {
+      return "You win!";
+    } else {
+      return "You lose!";
+    }
+  };
 
   const result = determineWinner(userChoice, computerChoice);
 
@@ -168,4 +173,13 @@ function displayResult(result) {
   if (resultEl) {
     resultEl.textContent = result;
   }
-} 
+}
+
+const playAgainBtn = document.getElementById('playAgainBtn');
+if (playAgainBtn) {
+  playAgainBtn.addEventListener('click', () => {
+    localStorage.removeItem("rpsBestOf");
+    window.location.href = "index.html";
+
+  });
+}
