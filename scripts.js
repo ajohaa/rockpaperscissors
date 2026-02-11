@@ -175,6 +175,13 @@ function displayResult(result) {
   }
 }
 
+function finalScoreDisplay() {
+  const finalScoreEl = document.getElementById('finalScore');
+  if (finalScoreEl) {
+    finalScoreEl.textContent = `final score: ${userWins} - ${computerWins}`;
+  }
+}
+
 const playAgainBtn = document.getElementById('playAgainBtn');
 if (playAgainBtn) {
   playAgainBtn.addEventListener('click', () => {
