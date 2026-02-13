@@ -192,20 +192,52 @@ body {
 }
 
 /* CHOICES */
-.choice-btn {
-  border: none;
-  background: #e0e0e0;
-  padding: 1rem;
-  border-radius: 16px;
-  transition: transform 120ms ease, box-shadow 180ms ease;
+/* source: https://cssbuttons.io/ */
+.choice{
+  align-items: center;
+  appearance: none;
+  background-color: #f8f3ff;
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: #b699f8;
+  box-shadow: rgba(143, 83, 254, 0.2) 0 2px 4px, rgba(143, 83, 254, 0.2) 0 7px 13px -3px, #ded6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #8e79dd;
+  cursor: pointer;
+  display: inline-flex;
+  height: 56px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 24px;
+  padding-right: 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 20px;
 }
 
-.choice-btn img {
-  /* slightly larger choice icons to match overall scale */
-  width: 60px;
-  height: auto;
+.choice:focus {
+  outline: none;
+  box-shadow: #f1e6ff 0 0 0 1.5px inset, rgba(157, 83, 254, 0.4) 0 2px 4px, rgba(143, 83, 254, 0.2) 0 7px 13px -3px, #ded6e7 0 -3px 0 inset;
 }
 
+.choice:hover {
+  box-shadow: rgba(143, 83, 254, 0.2) 0 4px 8px, rgba(143, 83, 254, 0.2) 0 7px 13px -3px, #ded6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.choice:active {
+  box-shadow: #f1e6ff 0 3px 7px inset;
+  transform: translateY(2px);
+}
 /* RESULTS */
 .result-text {
   font-size: 2rem;
@@ -229,7 +261,6 @@ body {
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
   height: 48px;
   justify-content: center;
   line-height: 1;

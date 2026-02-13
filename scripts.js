@@ -190,3 +190,26 @@ if (playAgainBtn) {
 
   });
 }
+
+// hand stuff
+
+// i want the hand images to change based on the user's choice and the computer's choice
+// 
+
+const userHand = document.getElementById("userHand");
+
+if (userChoice === "rock") {
+  userHand.textContent = "rock";
+} else if (userChoice === "paper") {
+  userHand.textContent = "paper";
+} else if (userChoice === "scissors") {
+  userHand.textContent = "scissors";
+}
+const computerHand = document.getElementById("computerHand");
+if (computerChoice === "rock") {
+  computerHand.textContent = "rock";
+} else if (computerChoice === "paper") {
+  computerHand.textContent = "paper";
+} else if (computerChoice === "scissors") {
+  computerHand.textContent = "scissors";
+}
