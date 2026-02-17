@@ -126,8 +126,13 @@ const updateHpDisplay = () => {
   document.getElementById("computerHealth").textContent = makeHearts(computerHP);
 };
 
+const userHand = document.getElementById("userHand");
+const computerHand = document.getElementById("computerHand");
+
 const playRound = (userChoice) => {
   const computerChoice = getComputerChoice();
+  if (userHand) userHand.textContent = userChoice;
+  if (computerHand) computerHand.textContent = computerChoice;
   const determineWinner = (userChoice, computerChoice) => {
     if (userChoice === computerChoice) {
       return "It's a tie!";
@@ -190,24 +195,4 @@ if (playAgainBtn) {
     window.location.href = "index.html";
 
   });
-}
-
-// hand stuff 
-
-const userHand = document.getElementById("userHand");
-
-if (userChoice === "rock") {
-  userHand.textContent = "rock";
-} else if (userChoice === "paper") {
-  userHand.textContent = "paper";
-} else if (userChoice === "scissors") {
-  userHand.textContent = "scissors";
-}
-const computerHand = document.getElementById("computerHand");
-if (computerChoice === "rock") {
-  computerHand.textContent = "rock";
-} else if (computerChoice === "paper") {
-  computerHand.textContent = "paper";
-} else if (computerChoice === "scissors") {
-  computerHand.textContent = "scissors";
 }
