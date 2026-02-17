@@ -176,9 +176,10 @@ function displayResult(result) {
 }
 
 function finalScoreDisplay() {
-  const finalScoreEl = document.getElementById('finalScore');
-  if (finalScoreEl) {
-    finalScoreEl.textContent = `final score: ${userWins} - ${computerWins}`;
+  const finalScore = document.getElementById('finalScore');
+  const username = localStorage.getItem("rpsUsername") || "guest";
+  if (finalScore) {
+    finalScore.textContent = `final score: ${username} ${userWins}, computer ${computerWins}`;
   }
 }
 
@@ -191,10 +192,7 @@ if (playAgainBtn) {
   });
 }
 
-// hand stuff
-
-// i want the hand images to change based on the user's choice and the computer's choice
-// 
+// hand stuff 
 
 const userHand = document.getElementById("userHand");
 
